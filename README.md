@@ -99,3 +99,75 @@ This ZIP includes:
 • ✅ FastAPI backend with campaign creation and insights endpoints
 • 🎨 React + TypeScript component styled with Tailwind CSS
 • 🐳 Dockerfile for backend deployment
+
+
+To deploy your packaged Meta Ads Automation microservice and frontend to Azure, AWS, and GCP using Terraform, here's a multi-cloud deployment guide tailored to your SAAS AI FACTORY architecture.
+⸻
+🚀 Multi-Cloud Deployment Strategy
+✅ 1. Prepare Your ZIP
+Unzip the meta_ads_automation.zip and push the backend to a container registry (e.g. Docker Hub, Azure Container Registry, AWS ECR, or GCP Artifact Registry).
+⸻
+✅ 2. Terraform Modules Overview
+🔹 Azure (Container Instance + TEE VM)
+Use the module we created earlier:
+• Deploy FastAPI backend in Azure Container Instance
+• Optionally deploy a Confidential Compute VM for TEE
+• Use Azure DNS for public access
+🔹 AWS (ECS + Fargate or EC2)
+• Use ECS with Fargate for serverless container hosting
+• Use EC2 Nitro Enclaves for TEE
+• Use Route 53 for DNS
+🔹 GCP (Cloud Run or GKE)
+• Use Cloud Run for serverless deployment
+• Use Confidential VMs for TEE
+• Use Cloud DNS for public access
+⸻
+✅ 3. Terraform Directory Structure
+terraform/
+├── azure/
+│   └── main.tf
+├── aws/
+│   └── main.tf
+├── gcp/
+│   └── main.tf
+└── variables.tf
+
+⸻
+✅ 4. Common Variables (variables.tf)
+variable "image_url" {
+  description = "Docker image URL for the FastAPI backend"
+  type        = string
+}
+
+variable "app_name" {
+  description = "Name of the deployed app"
+  type        = string
+  default     = "meta-ads-automation"
+}
+
+variable "region" {
+  description = "Cloud region"
+  type        = string
+}
+
+⸻
+✅ 5. Deployment Automation
+You can use a Terraform wrapper script or CI/CD pipeline to:
+• Deploy to all three clouds
+• Monitor health and logs
+• Roll back on failure
+
+Terraform module for deploying the Meta Ads Automation microservice to Azure. It includes:
+📄 main.tf — Defines Azure resources
+📄 variables.tf — Input variables
+📄 outputs.tf — DNS output
+📄 README.md — Usage instructions
+⸻
+✅ Next Steps
+1. Push your Docker image to Azure Container Registry or Docker Hub.
+2. Set your variables in a terraform.tfvars file.
+3. Run:
+3. terraform init
+terraform apply
+
+All files are located in Terraform Azure - AWS Zip
