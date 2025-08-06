@@ -93,3 +93,9 @@ If you’ve already added the webhook to your GitHub repository secrets as SLACK
 1. Making a small commit to the main branch (e.g., update README).
 2. Watching the Actions tab for the workflow run.
 3. Checking your Slack channel for the success or failure message.
+
+Meta ads automation zip(1) containes:
+This ZIP includes:
+• ✅ FastAPI backend with campaign creation and insights endpoints
+• 🎨 React + TypeScript component styled with Tailwind CSS
+• 🐳 Dockerfile for backend deployment
